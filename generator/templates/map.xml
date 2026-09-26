@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+  Konfigurace mapy Lednice. Používá konfigurační soubory evropské základní mapy (mapEU)
+  – ceny, plodiny, počasí a sezóny odpovídají střední Evropě.
+  Pokud stavíte z oficiální šablony GIANTS, použije se map.xml ze šablony
+  a install_to_template.py v něm jen upraví rozměry a cesty (viz README).
+-->
+<map width="4096" height="4096" imageFilename="maps/overview.dds">
+    <filename>maps/map.i3d</filename>
+    <farmlands filename="maps/config/farmlands.xml"/>
+</map>

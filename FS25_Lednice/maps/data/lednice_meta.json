@@ -1,0 +1,26 @@
+{
+ "mapSize": 4096,
+ "demSize": 4097,
+ "weightSize": 8192,
+ "heightScale": 255.0,
+ "baseElevation_m": 150.0,
+ "center": {
+  "lat": 48.804,
+  "lon": 16.806
+ },
+ "layers": [
+  "grass",
+  "grassMeadow",
+  "field",
+  "fieldLight",
+  "forest",
+  "scrub",
+  "wetland",
+  "garden",
+  "concrete",
+  "mudTracks",
+  "gravel",
+  "riverMud",
+  "asphalt"
+ ]
+}

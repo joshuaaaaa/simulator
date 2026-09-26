@@ -38,6 +38,8 @@ a **zámecký park** s Minaretem, Janovým hradem, Čínským pavilonem i Zámec
 
 ## Postup – jak z toho udělat hratelnou mapu
 
+**Podrobný návod krok za krokem pro začátečníky: [docs/POSTUP.md](docs/POSTUP.md)**
+
 FS25 mapa potřebuje soubory, které vytváří jen **Giants Editor** (binární density mapy `.gdm`,
 nastavení shaderů terénu, fyziku, …). Proto se podklady vkládají do **oficiální prázdné šablony mapy**.
 

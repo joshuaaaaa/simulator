@@ -51,6 +51,28 @@ def find_one(root, pattern, predicate=None):
     return None
 
 
+def diagnose(tpl):
+    """Srozumitelné chyby pro nejčastější problémy se složkou šablony."""
+    if not tpl.exists():
+        raise SystemExit(
+            f"Složka neexistuje: {tpl}\n"
+            "Zkontrolujte cestu – musí být v uvozovkách a za uvozovkami už nic nesmí být.\n"
+            'Příklad: python generator/install_to_template.py "C:/Users/JMENO/Documents/My Games/'
+            'FarmingSimulator2025/mods/FS25_Lednice"')
+    if not tpl.is_dir():
+        raise SystemExit(f"Cesta vede na soubor, ne na složku: {tpl}\nPokud je to .zip, nejdřív ho rozbalte.")
+    items = sorted(tpl.iterdir())
+    if not items:
+        raise SystemExit(f"Složka {tpl} je prázdná – rozbalte do ní šablonu mapy (krok 5 v docs/POSTUP.md).")
+    zips = [p.name for p in items if p.suffix.lower() == ".zip"]
+    if zips and not any(tpl.rglob("*.i3d")):
+        raise SystemExit(f"Ve složce je jen archiv {', '.join(zips)} – rozbalte ho přímo do {tpl}.")
+    if not any(tpl.rglob("*.i3d")):
+        listing = ", ".join(p.name for p in items[:20])
+        raise SystemExit(f"Ve složce {tpl} není žádný .i3d soubor, takže to není mapa FS25.\n"
+                         f"Obsah složky: {listing}")
+
+
 def set_attr(text, tag, attr, value):
     """Nastaví atribut u prvního výskytu tagu (zachová zbytek XML beze změny)."""
     m = re.search(rf"<{tag}\b[^>]*>", text)
@@ -73,9 +95,16 @@ def main():
     report = []
 
     # --- výškopis ---
+    diagnose(tpl)
     dem_t = find_one(tpl, "dem.png")
     if dem_t is None:
-        raise SystemExit("V šabloně jsem nenašel dem.png – je to rozbalená mapa FS25?")
+        alt = sorted(p for p in tpl.rglob("*.png") if "dem" in p.name.lower())
+        if len(alt) == 1:
+            dem_t = alt[0]
+            print(f"Používám výškopis {dem_t.relative_to(tpl)}")
+        else:
+            others = [str(p.relative_to(tpl)) for p in alt] or ["žádný"]
+            raise SystemExit("V šabloně jsem nenašel dem.png. Soubory s 'dem' v názvu: " + ", ".join(others))
     data_dir = dem_t.parent
     old = Image.open(dem_t).size
     shutil.copy(DATA / "dem.png", dem_t)

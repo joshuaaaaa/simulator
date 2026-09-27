@@ -36,6 +36,11 @@ a **zámecký park** s Minaretem, Janovým hradem, Čínským pavilonem i Zámec
   Maurská vodárna, Janův hrad, Lovecký zámeček, Čínský pavilon, Hubertova šopa).
 * **Pole** – 115 polí orné půdy + louky, vinice a sady z OSM (min. 0,5 ha); každé má svůj pozemek.
 
+## 3D prohlížečka (bez hry)
+
+Složka `web3d/` obsahuje interaktivní 3D model Lednice pro webový prohlížeč (three.js) ze stejných dat.
+Data se exportují příkazem `python generator/build_web3d.py`.
+
 ## Postup – jak z toho udělat hratelnou mapu
 
 **Podrobný návod krok za krokem pro začátečníky: [docs/POSTUP.md](docs/POSTUP.md)**

@@ -1,0 +1,634 @@
+<title>Lednice 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+  :root {
+    --panel: rgba(240, 244, 241, 0.93);
+    --panel-solid: #eef2ef;
+    --ink: #1c2a23;
+    --muted: #56665d;
+    --line: rgba(28, 42, 35, 0.14);
+    --accent: #2c6a4d;
+    --accent-ink: #ffffff;
+    --ochre: #a8741c;
+    --sky: #c9d8de;
+    --label-bg: rgba(255, 255, 255, 0.9);
+    --shadow: 0 8px 28px rgba(20, 35, 28, 0.18);
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --panel: rgba(18, 26, 22, 0.92);
+      --panel-solid: #121a16;
+      --ink: #e1e9e4;
+      --muted: #9cafa4;
+      --line: rgba(225, 233, 228, 0.14);
+      --accent: #6cbf93;
+      --accent-ink: #0d1a13;
+      --ochre: #e0ad55;
+      --sky: #1d2a30;
+      --label-bg: rgba(18, 26, 22, 0.9);
+      --shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --panel: rgba(18, 26, 22, 0.92);
+    --panel-solid: #121a16;
+    --ink: #e1e9e4;
+    --muted: #9cafa4;
+    --line: rgba(225, 233, 228, 0.14);
+    --accent: #6cbf93;
+    --accent-ink: #0d1a13;
+    --ochre: #e0ad55;
+    --sky: #1d2a30;
+    --label-bg: rgba(18, 26, 22, 0.9);
+    --shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; overflow: hidden; background: var(--sky); color: var(--ink);
+    font: 15px/1.45 var(--body);
+  }
+  #view { position: fixed; inset: 0; touch-action: none; cursor: grab; }
+  #view.dragging { cursor: grabbing; }
+  canvas { display: block; }
+
+  .panel {
+    position: fixed; z-index: 5;
+    top: calc(env(safe-area-inset-top, 0px) + 16px); left: 16px;
+    width: 300px; max-height: calc(100% - 32px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    display: flex; flex-direction: column;
+    background: var(--panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+  }
+  .head { padding: 16px 18px 12px; display: grid; gap: 2px; border-bottom: 1px solid var(--line); }
+  .head h1 { margin: 0; font: 700 26px/1.05 var(--display); letter-spacing: -0.01em; text-wrap: balance; }
+  .head .sub { color: var(--muted); font-size: 13px; }
+  .head .toggle { display: none; }
+  .scroll { overflow-y: auto; padding: 12px 18px 16px; display: grid; gap: 16px; }
+  .sec { display: grid; gap: 8px; }
+  .sec h2 {
+    margin: 0; font: 600 11px/1 var(--body); text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted);
+  }
+  .places { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .places button {
+    font: 600 13px/1.2 var(--body); text-align: left; color: var(--ink);
+    background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; cursor: pointer;
+  }
+  .places button:hover { border-color: var(--accent); color: var(--accent); }
+  .places button:focus-visible, .layers input:focus-visible + span, .head .toggle:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  .layers { display: grid; gap: 6px; }
+  .layers label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; }
+  .layers input { accent-color: var(--accent); width: 16px; height: 16px; margin: 0; }
+  .layers .n { margin-left: auto; font: 12px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; font-size: 13px; }
+  .legend span { display: flex; align-items: center; gap: 7px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; flex: none; border: 1px solid var(--line); }
+  .help { font-size: 13px; color: var(--muted); margin: 0; }
+  .help b { color: var(--ink); font-weight: 600; }
+  .src { font-size: 12px; color: var(--muted); margin: 0; }
+  .src a { color: var(--accent); }
+
+  .readout {
+    position: fixed; z-index: 5; right: 16px; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+    font: 12px/1.5 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink);
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px;
+    box-shadow: var(--shadow); text-align: right; min-width: 210px;
+  }
+  .readout .coord { color: var(--muted); }
+  .compass {
+    position: fixed; z-index: 5; right: 16px; top: calc(env(safe-area-inset-top, 0px) + 16px);
+    width: 48px; height: 48px; border-radius: 50%; background: var(--panel); border: 1px solid var(--line);
+    box-shadow: var(--shadow); cursor: pointer; display: grid; place-items: center; padding: 0;
+  }
+  .compass svg { width: 34px; height: 34px; }
+
+  .labels { position: fixed; inset: 0; pointer-events: none; z-index: 3; }
+  .lbl {
+    position: absolute; transform: translate(-50%, -100%); white-space: nowrap; pointer-events: auto; cursor: pointer;
+    font: 600 12px/1 var(--body); color: var(--ink); background: var(--label-bg);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 9px 4px 8px; box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  .lbl::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--ochre); margin-right: 6px; vertical-align: 1px; }
+  .lbl.fld { font: 600 11px/1 var(--mono); padding: 3px 6px; pointer-events: none; background: rgba(247, 232, 150, 0.9); color: #3a3210; border-color: rgba(58, 50, 16, 0.3); }
+  .lbl.fld::before { display: none; }
+
+  .loading {
+    position: fixed; inset: 0; z-index: 4; display: grid; place-items: center; pointer-events: none;
+    font: 600 15px var(--body); color: var(--muted);
+  }
+  .loading .bar { width: min(260px, 60vw); height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; margin-top: 10px; }
+  .loading .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+  .error { color: #b3261e; }
+
+  @media (max-width: 640px) {
+    .panel {
+      top: auto; left: 16px; right: 16px; width: auto;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); max-height: 55%;
+    }
+    .head { grid-template-columns: 1fr auto; align-items: center; padding: 12px 14px 10px; }
+    .head h1 { font-size: 21px; }
+    .head .toggle {
+      display: block; grid-row: 1 / span 2; grid-column: 2; font: 600 13px var(--body); color: var(--accent);
+      background: none; border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; cursor: pointer;
+    }
+    .panel.collapsed .scroll { display: none; }
+    .panel.collapsed .head { border-bottom: 0; }
+    .readout { top: calc(env(safe-area-inset-top, 0px) + 16px); bottom: auto; right: 76px; min-width: 0; font-size: 11px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loading .bar i { transition: none; }
+  }
+</style>
+
+<div id="view" aria-label="3D model obce Lednice"></div>
+<div class="labels" id="labels"></div>
+
+<div class="loading" id="loading">
+  <div>
+    <div id="loadtext">Načítám terén Lednice…</div>
+    <div class="bar"><i id="loadbar"></i></div>
+  </div>
+</div>
+
+<aside class="panel" id="panel">
+  <div class="head">
+    <h1>Lednice 3D</h1>
+    <div class="sub">4 × 4 km · okres Břeclav · 48,80° s. š.</div>
+    <button class="toggle" id="collapse" type="button" aria-expanded="true">Skrýt</button>
+  </div>
+  <div class="scroll">
+    <section class="sec">
+      <h2>Přeletět na</h2>
+      <div class="places" id="places"></div>
+    </section>
+    <section class="sec">
+      <h2>Vrstvy</h2>
+      <div class="layers">
+        <label><input type="checkbox" id="l-buildings" checked><span>Budovy</span><span class="n" id="n-buildings"></span></label>
+        <label><input type="checkbox" id="l-trees" checked><span>Stromy</span><span class="n" id="n-trees"></span></label>
+        <label><input type="checkbox" id="l-water" checked><span>Vodní hladiny</span><span class="n" id="n-water"></span></label>
+        <label><input type="checkbox" id="l-fields"><span>Hranice polí</span><span class="n" id="n-fields"></span></label>
+        <label><input type="checkbox" id="l-numbers"><span>Čísla polí</span></label>
+        <label><input type="checkbox" id="l-labels" checked><span>Názvy památek</span></label>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>Povrch terénu</h2>
+      <div class="legend" id="legend"></div>
+    </section>
+    <section class="sec">
+      <h2>Ovládání</h2>
+      <p class="help"><b>Tažení</b> posun · <b>pravé tlačítko</b> nebo <b>Shift + tažení</b> otáčení a náklon · <b>kolečko</b> přiblížení.<br>Na mobilu: <b>1 prst</b> posun, <b>2 prsty</b> přiblížení a otáčení.</p>
+    </section>
+    <p class="src">Data © přispěvatelé <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> (ODbL) přes Overture Maps, výškopis AWS Terrain Tiles. Stejná data jako mapa FS25_Lednice.</p>
+  </div>
+</aside>
+
+<button class="compass" id="compass" type="button" aria-label="Natočit mapu na sever">
+  <svg viewBox="0 0 34 34" aria-hidden="true"><g id="needle" style="transform-origin:17px 17px">
+    <path d="M17 3 L21 17 L13 17 Z" fill="#c0392b"/><path d="M17 31 L21 17 L13 17 Z" fill="currentColor" opacity=".45"/></g></svg>
+</button>
+
+<div class="readout" id="readout">
+  <div id="r-elev">— m n. m.</div>
+  <div class="coord" id="r-coord">najeďte myší na terén</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var loadbar = $("loadbar"), loadtext = $("loadtext");
+
+  if (!window.THREE) {
+    loadtext.textContent = "Nepodařilo se načíst knihovnu three.js. Zkontrolujte připojení a obnovte stránku.";
+    loadtext.className = "error";
+    return;
+  }
+
+  // Barvy povrchu (stejné jako textura terénu)
+  var LEGEND = [
+    ["Pole", "#9e8058"], ["Vinice, sady", "#b0a068"], ["Louky", "#aabe69"], ["Tráva", "#94b060"],
+    ["Les", "#3e6034"], ["Voda", "#406876"], ["Asfalt", "#5a5a5e"], ["Dlažba", "#bebcb6"],
+    ["Štěrk, cesty", "#cdc4aa"], ["Polní cesty", "#968264"]
+  ];
+  $("legend").innerHTML = LEGEND.map(function (l) {
+    return '<span><i style="background:' + l[1] + '"></i>' + l[0] + "</span>";
+  }).join("");
+
+  // ---------------------------------------------------------------- scéna
+  var view = $("view");
+  var renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  view.appendChild(renderer.domElement);
+
+  var scene = new THREE.Scene();
+  var SKY = new THREE.Color(0xc4d6df);
+  scene.background = SKY;
+  scene.fog = new THREE.Fog(SKY, 2500, 7500);
+
+  var camera = new THREE.PerspectiveCamera(50, 1, 2, 20000);
+  scene.add(new THREE.HemisphereLight(0xe6f0ff, 0x6b7a4a, 0.75));
+  var sun = new THREE.DirectionalLight(0xfff1dc, 0.85);
+  sun.position.set(-1200, 1600, 900);
+  scene.add(sun);
+
+  var groups = {
+    buildings: new THREE.Group(), trees: new THREE.Group(), water: new THREE.Group(), fields: new THREE.Group()
+  };
+  Object.keys(groups).forEach(function (k) { scene.add(groups[k]); });
+  groups.fields.visible = false;
+
+  // ---------------------------------------------------------------- kamera
+  var cam = { tx: 0, ty: 0, tz: 0, dist: 1400, yaw: 0.55, pitch: 0.62 };
+  var fly = null;
+  function applyCamera() {
+    var cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+    camera.position.set(
+      cam.tx + cam.dist * cp * Math.sin(cam.yaw),
+      cam.ty + cam.dist * sp,
+      cam.tz + cam.dist * cp * Math.cos(cam.yaw)
+    );
+    var gh = heightAt(camera.position.x, camera.position.z) + 3;
+    if (camera.position.y < gh) camera.position.y = gh;
+    camera.lookAt(cam.tx, cam.ty, cam.tz);
+    $("needle").style.transform = "rotate(" + (cam.yaw * 180 / Math.PI) + "deg)";
+  }
+  function clampTarget() {
+    var h = 2048;
+    cam.tx = Math.max(-h, Math.min(h, cam.tx));
+    cam.tz = Math.max(-h, Math.min(h, cam.tz));
+    cam.ty = heightAt(cam.tx, cam.tz);
+    cam.dist = Math.max(25, Math.min(6000, cam.dist));
+    cam.pitch = Math.max(0.08, Math.min(1.5, cam.pitch));
+  }
+
+  var pointers = new Map(), drag = null, lastPinch = null;
+  view.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+  view.addEventListener("pointerdown", function (e) {
+    view.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    drag = { rotate: e.button === 2 || e.shiftKey, x: e.clientX, y: e.clientY };
+    fly = null;
+    view.classList.add("dragging");
+  });
+  view.addEventListener("pointermove", function (e) {
+    if (!pointers.has(e.pointerId)) { hover(e); return; }
+    var prev = pointers.get(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      var pts = Array.from(pointers.values());
+      var dx = pts[1].x - pts[0].x, dy = pts[1].y - pts[0].y;
+      var d = Math.hypot(dx, dy), a = Math.atan2(dy, dx), my = (pts[0].y + pts[1].y) / 2;
+      if (lastPinch) {
+        cam.dist *= lastPinch.d / d;
+        cam.yaw -= a - lastPinch.a;
+        cam.pitch += (my - lastPinch.my) * 0.004;
+      }
+      lastPinch = { d: d, a: a, my: my };
+    } else if (drag) {
+      var ddx = e.clientX - prev.x, ddy = e.clientY - prev.y;
+      if (drag.rotate) {
+        cam.yaw -= ddx * 0.005;
+        cam.pitch += ddy * 0.004;
+      } else {
+        var k = cam.dist * 0.0014;
+        var s = Math.sin(cam.yaw), c = Math.cos(cam.yaw);
+        cam.tx -= (ddx * c + ddy * s) * k;
+        cam.tz -= (-ddx * s + ddy * c) * k;
+      }
+    }
+    clampTarget();
+  });
+  function endPointer(e) {
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) lastPinch = null;
+    if (pointers.size === 0) { drag = null; view.classList.remove("dragging"); }
+  }
+  view.addEventListener("pointerup", endPointer);
+  view.addEventListener("pointercancel", endPointer);
+  view.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    fly = null;
+    cam.dist *= Math.exp(e.deltaY * 0.0012);
+    clampTarget();
+  }, { passive: false });
+  window.addEventListener("keydown", function (e) {
+    if (e.target && e.target.tagName === "INPUT") return;
+    var step = cam.dist * 0.05, s = Math.sin(cam.yaw), c = Math.cos(cam.yaw);
+    if (e.key === "ArrowUp" || e.key === "w") { cam.tx -= s * step; cam.tz -= c * step; }
+    else if (e.key === "ArrowDown" || e.key === "s") { cam.tx += s * step; cam.tz += c * step; }
+    else if (e.key === "ArrowLeft" || e.key === "a") { cam.tx -= c * step; cam.tz += s * step; }
+    else if (e.key === "ArrowRight" || e.key === "d") { cam.tx += c * step; cam.tz -= s * step; }
+    else if (e.key === "q") cam.yaw += 0.05;
+    else if (e.key === "e") cam.yaw -= 0.05;
+    else if (e.key === "+" || e.key === "=") cam.dist *= 0.9;
+    else if (e.key === "-") cam.dist *= 1.1;
+    else return;
+    fly = null;
+    clampTarget();
+  });
+  $("compass").addEventListener("click", function () { flyTo({ tx: cam.tx, tz: cam.tz, dist: cam.dist, yaw: 0, pitch: cam.pitch }); });
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function flyTo(t) {
+    var from = { tx: cam.tx, tz: cam.tz, dist: cam.dist, yaw: cam.yaw, pitch: cam.pitch };
+    var dy = t.yaw - from.yaw;
+    dy = Math.atan2(Math.sin(dy), Math.cos(dy));
+    fly = { from: from, to: Object.assign({}, t, { yaw: from.yaw + dy }), t0: performance.now(), dur: reduceMotion ? 1 : 1600 };
+  }
+  function stepFly(now) {
+    if (!fly) return;
+    var u = Math.min(1, (now - fly.t0) / fly.dur);
+    var e = u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+    ["tx", "tz", "yaw", "pitch"].forEach(function (k) { cam[k] = fly.from[k] + (fly.to[k] - fly.from[k]) * e; });
+    cam.dist = Math.exp(Math.log(fly.from.dist) + (Math.log(fly.to.dist) - Math.log(fly.from.dist)) * e);
+    clampTarget();
+    if (u >= 1) fly = null;
+  }
+
+  // ---------------------------------------------------------------- data
+  var H = null, N = 0, STEP = 8, META = null;
+  function heightAt(x, z) {
+    if (!H) return 0;
+    var fx = (x + 2048) / STEP, fz = (z + 2048) / STEP;
+    fx = Math.max(0, Math.min(N - 1.001, fx)); fz = Math.max(0, Math.min(N - 1.001, fz));
+    var i = Math.floor(fx), j = Math.floor(fz), u = fx - i, v = fz - j;
+    var a = H[j * N + i], b = H[j * N + i + 1], c = H[(j + 1) * N + i], d = H[(j + 1) * N + i + 1];
+    return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
+  }
+
+  var progress = 0, TOTAL = 6;
+  function tick(msg) {
+    progress++;
+    loadbar.style.width = (progress / TOTAL * 100) + "%";
+    if (msg) loadtext.textContent = msg;
+  }
+  // binární data jsou uložená jako base64 text (hosting servíruje jen textové typy)
+  function getBin(url) {
+    url = url.replace(/\.bin$/, ".b64.txt");
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error(url + " (" + r.status + ")");
+      return r.text();
+    }).then(function (t) {
+      var s = atob(t.trim()), n = s.length, u = new Uint8Array(n);
+      for (var i = 0; i < n; i++) u[i] = s.charCodeAt(i);
+      return u.buffer;
+    });
+  }
+  function getJSON(url) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error(url + " (" + r.status + ")");
+      return r.json();
+    });
+  }
+  function getTexture(url) {
+    return new Promise(function (res, rej) { new THREE.TextureLoader().load(url, res, undefined, function () { rej(new Error(url)); }); });
+  }
+
+  function buildTerrain(buf, tex) {
+    H = new Float32Array(N * N);
+    var raw = new Uint16Array(buf);
+    for (var k = 0; k < raw.length; k++) H[k] = raw[k] / 100;
+    var pos = new Float32Array(N * N * 3), uv = new Float32Array(N * N * 2);
+    for (var j = 0; j < N; j++) for (var i = 0; i < N; i++) {
+      var p = j * N + i;
+      pos[p * 3] = i * STEP - 2048; pos[p * 3 + 1] = H[p]; pos[p * 3 + 2] = j * STEP - 2048;
+      uv[p * 2] = i / (N - 1); uv[p * 2 + 1] = 1 - j / (N - 1);
+    }
+    var idx = new Uint32Array((N - 1) * (N - 1) * 6), q = 0;
+    for (j = 0; j < N - 1; j++) for (i = 0; i < N - 1; i++) {
+      var a = j * N + i, b = a + 1, c = a + N, d = c + 1;
+      idx[q++] = a; idx[q++] = c; idx[q++] = b; idx[q++] = b; idx[q++] = c; idx[q++] = d;
+    }
+    var g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
+    g.setIndex(new THREE.BufferAttribute(idx, 1));
+    g.computeVertexNormals();
+    tex.encoding = THREE.sRGBEncoding;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    tex.minFilter = THREE.LinearMipmapLinearFilter;
+    var m = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ map: tex }));
+    scene.add(m);
+    // okolní krajina za hranou mapy
+    var outer = new THREE.Mesh(new THREE.PlaneGeometry(40000, 40000), new THREE.MeshLambertMaterial({ color: 0x8fa062 }));
+    outer.rotation.x = -Math.PI / 2;
+    outer.position.y = Math.min.apply(null, [H[0], H[N - 1], H[N * N - 1], H[N * (N - 1)]]) - 1.5;
+    scene.add(outer);
+  }
+
+  function meshFromBin(buf) {
+    var dv = new DataView(buf), n = dv.getUint32(0, true);
+    var q = new Int16Array(buf, 4, n * 3), col = new Uint8Array(buf, 4 + n * 6, n * 3);
+    var pos = new Float32Array(n * 3);
+    for (var k = 0; k < n * 3; k++) pos[k] = q[k] / 10;
+    var g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    g.setAttribute("color", new THREE.BufferAttribute(col, 3, true));
+    g.computeVertexNormals();
+    return { geometry: g, count: n };
+  }
+
+  function buildTrees(buf) {
+    var dv = new DataView(buf), n = dv.getUint32(0, true);
+    var xz = new Int16Array(buf, 4, n * 2), y = new Uint16Array(buf, 4 + n * 4, n), ex = new Uint8Array(buf, 4 + n * 6, n * 2);
+    // tvary: lužní les (kulaté koruny), park (vyšší), stromořadí, keře
+    var KIND = [
+      { h: 11, r: 4.6, col: [0x3f6a36, 0x4a7a3c, 0x375f31] },
+      { h: 14, r: 5.6, col: [0x557f3f, 0x4c7438, 0x62894a, 0x7a8f3e] },
+      { h: 10, r: 3.8, col: [0x4f7a3a, 0x5b8644] },
+      { h: 2.2, r: 2.0, col: [0x5d7d3d, 0x6c8a45] }
+    ];
+    var crownGeo = new THREE.IcosahedronGeometry(1, 1);
+    var trunkGeo = new THREE.CylinderGeometry(0.18, 0.28, 1, 5);
+    trunkGeo.translate(0, 0.5, 0);
+    var crown = new THREE.InstancedMesh(crownGeo, new THREE.MeshLambertMaterial({ color: 0xffffff }), n);
+    var trunk = new THREE.InstancedMesh(trunkGeo, new THREE.MeshLambertMaterial({ color: 0x5b4a38 }), n);
+    var m = new THREE.Matrix4(), qt = new THREE.Quaternion(), sc = new THREE.Vector3(), p = new THREE.Vector3(), c = new THREE.Color();
+    var seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    for (var i = 0; i < n; i++) {
+      var k = KIND[ex[i * 2 + 1]] || KIND[0], s = ex[i * 2] / 100;
+      var x = xz[i * 2] / 10, z = xz[i * 2 + 1] / 10, gy = y[i] / 100;
+      var h = k.h * s, r = k.r * s;
+      qt.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rnd() * 6.28);
+      p.set(x, gy + h - r * 0.9, z); sc.set(r, r * (0.95 + rnd() * 0.35), r);
+      m.compose(p, qt, sc); crown.setMatrixAt(i, m);
+      c.setHex(k.col[Math.floor(rnd() * k.col.length)]);
+      crown.setColorAt(i, c);
+      p.set(x, gy - 0.3, z); sc.set(s, Math.max(0.1, h - r * 1.2), s);
+      m.compose(p, qt, sc); trunk.setMatrixAt(i, m);
+    }
+    crown.instanceColor.needsUpdate = true;
+    groups.trees.add(trunk, crown);
+    return n;
+  }
+
+  function buildFields(list) {
+    var pos = [];
+    list.forEach(function (f) {
+      var pts = f.p;
+      for (var i = 0; i < pts.length; i++) {
+        var a = pts[i], b = pts[(i + 1) % pts.length];
+        pos.push(a[0], a[1] + 0.6, a[2], b[0], b[1] + 0.6, b[2]);
+      }
+    });
+    var g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+    groups.fields.add(new THREE.LineSegments(g, new THREE.LineBasicMaterial({ color: 0xf5e27a })));
+  }
+
+  // ---------------------------------------------------------------- popisky
+  var labelsEl = $("labels"), labels = [];
+  function addLabel(text, x, y, z, cls, onClick) {
+    var el = document.createElement("div");
+    el.className = "lbl" + (cls ? " " + cls : "");
+    el.textContent = text;
+    if (onClick) el.addEventListener("click", onClick);
+    labelsEl.appendChild(el);
+    var l = { el: el, v: new THREE.Vector3(x, y, z), cls: cls || "" };
+    labels.push(l);
+    return l;
+  }
+  var showLabels = true, showNumbers = false;
+  var tmp = new THREE.Vector3();
+  function updateLabels() {
+    var w = window.innerWidth, h = window.innerHeight;
+    labels.forEach(function (l) {
+      var on = l.cls === "fld" ? showNumbers : showLabels;
+      if (on) {
+        tmp.copy(l.v).project(camera);
+        var d = camera.position.distanceTo(l.v);
+        on = tmp.z < 1 && Math.abs(tmp.x) < 1.1 && Math.abs(tmp.y) < 1.1 && d < (l.cls === "fld" ? 2600 : 5200);
+        if (on) l.el.style.transform = "translate(" + ((tmp.x + 1) / 2 * w) + "px," + ((1 - tmp.y) / 2 * h) + "px) translate(-50%,-100%)";
+      }
+      l.el.hidden = !on;
+      if (on) { l.el.style.left = "0"; l.el.style.top = "0"; }
+    });
+  }
+
+  // ---------------------------------------------------------------- odečet souřadnic
+  var ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), lastHover = 0;
+  function hover(e) {
+    var now = performance.now();
+    if (!H || now - lastHover < 60) return;
+    lastHover = now;
+    ndc.set(e.clientX / window.innerWidth * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    var o = ray.ray.origin, d = ray.ray.direction, t = 0, hit = null;
+    for (var s = 0; s < 800 && t < 12000; s++) {
+      var px = o.x + d.x * t, py = o.y + d.y * t, pz = o.z + d.z * t;
+      if (Math.abs(px) > 2048 || Math.abs(pz) > 2048) { if (t > 0 && py < 0) break; }
+      else if (py <= heightAt(px, pz)) { hit = [px, pz]; break; }
+      t += Math.max(1.5, (py - heightAt(px, pz)) * 0.5);
+    }
+    if (!hit) return;
+    var elev = heightAt(hit[0], hit[1]) + META.baseElevation;
+    // místní převod (pro 4 km dostatečně přesný)
+    var lat = META.lat0 - hit[1] / 111194.9;
+    var lon = META.lon0 + hit[0] / (111194.9 * Math.cos(META.lat0 * Math.PI / 180));
+    $("r-elev").textContent = elev.toFixed(1).replace(".", ",") + " m n. m.";
+    $("r-coord").textContent = lat.toFixed(5) + "° N  " + lon.toFixed(5) + "° E";
+  }
+
+  // ---------------------------------------------------------------- UI
+  function bindToggle(id, fn) { $(id).addEventListener("change", function (e) { fn(e.target.checked); }); }
+  bindToggle("l-buildings", function (v) { groups.buildings.visible = v; });
+  bindToggle("l-trees", function (v) { groups.trees.visible = v; });
+  bindToggle("l-water", function (v) { groups.water.visible = v; });
+  bindToggle("l-fields", function (v) { groups.fields.visible = v; });
+  bindToggle("l-numbers", function (v) { showNumbers = v; });
+  bindToggle("l-labels", function (v) { showLabels = v; });
+  var panel = $("panel");
+  $("collapse").addEventListener("click", function () {
+    var c = panel.classList.toggle("collapsed");
+    this.textContent = c ? "Zobrazit" : "Skrýt";
+    this.setAttribute("aria-expanded", String(!c));
+  });
+  if (window.innerWidth <= 640) { panel.classList.add("collapsed"); $("collapse").textContent = "Zobrazit"; }
+
+  function resize() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  // ---------------------------------------------------------------- start
+  getJSON("data/scene.json").then(function (sc) {
+    META = sc; N = sc.terrainN; STEP = sc.terrainStep;
+    META.lat0 = 48.8040; META.lon0 = 16.8060;
+    tick("Načítám terén a povrch…");
+    return Promise.all([getBin("data/terrain.bin"), getTexture("data/ground.jpg")]).then(function (r) {
+      buildTerrain(r[0], r[1]);
+      tick("Stavím budovy…");
+      return getBin("data/buildings.bin");
+    }).then(function (buf) {
+      var b = meshFromBin(buf);
+      groups.buildings.add(new THREE.Mesh(b.geometry, new THREE.MeshLambertMaterial({ vertexColors: true })));
+      $("n-buildings").textContent = "1 838";
+      tick("Napouštím rybníky…");
+      return getBin("data/water.bin");
+    }).then(function (buf) {
+      var w = meshFromBin(buf);
+      w.geometry.deleteAttribute("color");
+      groups.water.add(new THREE.Mesh(w.geometry, new THREE.MeshPhongMaterial({
+        color: 0x365f6e, specular: 0x2a4750, shininess: 30, transparent: true, opacity: 0.9
+      })));
+      $("n-water").textContent = "39";
+      tick("Sázím stromy…");
+      return getBin("data/trees.bin");
+    }).then(function (buf) {
+      var n = buildTrees(buf);
+      $("n-trees").textContent = n.toLocaleString("cs-CZ");
+      buildFields(sc.fields);
+      $("n-fields").textContent = sc.fields.length;
+      sc.fields.forEach(function (f) {
+        var cx = 0, cz = 0, cy = 0;
+        f.p.forEach(function (p) { cx += p[0]; cy += p[1]; cz += p[2]; });
+        addLabel(String(f.id), cx / f.p.length, cy / f.p.length + 2, cz / f.p.length, "fld");
+      });
+      var places = $("places");
+      sc.landmarks.forEach(function (l, i) {
+        var near = { tx: l.x, tz: l.z, dist: l.name === "Minaret" ? 260 : 330, yaw: 0.6 + i * 0.35, pitch: 0.42 };
+        addLabel(l.name, l.x, l.y + (l.name === "Minaret" ? 66 : 24), l.z, "", function () { flyTo(near); });
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = l.name;
+        b.addEventListener("click", function () { flyTo(near); });
+        places.appendChild(b);
+      });
+      tick();
+      $("loading").hidden = true;
+      var z = sc.landmarks[0];
+      cam.tx = z.x + 250; cam.tz = z.z + 150;
+      clampTarget();
+      flyTo({ tx: z.x, tz: z.z + 40, dist: 900, yaw: 0.5, pitch: 0.5 });
+    });
+  }).catch(function (err) {
+    loadtext.textContent = "Data se nepodařilo načíst: " + err.message;
+    loadtext.className = "error";
+  });
+
+  clampTarget();
+  (function loop(now) {
+    stepFly(now);
+    applyCamera();
+    renderer.render(scene, camera);
+    updateLabels();
+    requestAnimationFrame(loop);
+  })(performance.now());
+})();
+</script>

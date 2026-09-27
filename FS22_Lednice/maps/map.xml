@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+  Konfigurace mapy Lednice pro FS22. Při stavbě z šablony se použije map.xml
+  šablony a install_to_template.py v něm upraví jen rozměry (viz docs/POSTUP_FS22.md).
+-->
+<map width="4096" height="4096" imageFilename="maps/overview.dds">
+    <filename>maps/map.i3d</filename>
+    <farmlands filename="maps/config/farmlands.xml"/>
+</map>

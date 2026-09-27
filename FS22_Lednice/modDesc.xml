@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<modDesc descVersion="72">
+    <author>FS25 Lednice generator</author>
+    <version>0.1.0.0</version>
+    <title>
+        <en>Lednice (CZ)</en>
+        <cz>Lednice</cz>
+        <de>Eisgrub / Lednice</de>
+    </title>
+    <description>
+        <en><![CDATA[Real-world based map of the village of Lednice (South Moravia, Czech Republic) – 4x map (4096 x 4096 m). Streets, houses, fields, meadows, vineyards, the Lednice château, its gardens and the château park with the Minaret, generated from OpenStreetMap data (© OpenStreetMap contributors, ODbL) via Overture Maps.]]></en>
+        <cz><![CDATA[Mapa podle skutečné obce Lednice na jižní Moravě – 4x mapa (4096 x 4096 m). Reálné ulice, domy, pole, louky, vinice, zámek Lednice, zámecká zahrada a zámecký park s Minaretem a Janovým hradem. Vygenerováno z dat OpenStreetMap (© přispěvatelé OpenStreetMap, ODbL) přes Overture Maps.]]></cz>
+    </description>
+    <iconFilename>icon_Lednice.dds</iconFilename>
+    <multiplayer supported="true"/>
+
+    <maps>
+        <map id="MapLednice" className="Mission00" filename="$dataS/scripts/missions/mission00.lua"
+             configFilename="maps/map.xml"
+             defaultVehiclesXMLFilename="$data/maps/mapFR/defaultVehicles.xml"
+             defaultItemsXMLFilename="$data/maps/mapFR/defaultItems.xml">
+            <title>
+                <en>Lednice</en>
+                <cz>Lednice</cz>
+            </title>
+            <description>
+                <en>Lednice – South Moravia, Czech Republic</en>
+                <cz>Lednice – jižní Morava</cz>
+            </description>
+            <iconFilename>maps/overview.dds</iconFilename>
+        </map>
+    </maps>
+</modDesc>

@@ -36,6 +36,12 @@ a **zámecký park** s Minaretem, Janovým hradem, Čínským pavilonem i Zámec
   Maurská vodárna, Janův hrad, Lovecký zámeček, Čínský pavilon, Hubertova šopa).
 * **Pole** – 115 polí orné půdy + louky, vinice a sady z OSM (min. 0,5 ha); každé má svůj pozemek.
 
+## Verze pro Farming Simulator 22
+
+Složka **`FS22_Lednice/`** obsahuje stejnou mapu pro FS22 (Giants Editor 9). Pole jsou převedená
+na obdélníky `fieldDimensions`, které FS22 používá. Postup: **[docs/POSTUP_FS22.md](docs/POSTUP_FS22.md)**.
+Vytvoří se příkazem `python generator/build_fs22.py` (po `build_map.py`).
+
 ## 3D prohlížečka (bez hry)
 
 Složka `web3d/` obsahuje interaktivní 3D model Lednice pro webový prohlížeč (three.js) ze stejných dat.

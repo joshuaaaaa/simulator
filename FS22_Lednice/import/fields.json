@@ -1,0 +1,1572 @@
+[
+ {
+  "id": 1,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.73,
+  "x": -1522.7,
+  "z": -1932.3,
+  "obdelniku_fs22": 18
+ },
+ {
+  "id": 2,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.37,
+  "x": -1215.3,
+  "z": -1907.1,
+  "obdelniku_fs22": 18
+ },
+ {
+  "id": 3,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 2.05,
+  "x": -470.5,
+  "z": -1919.7,
+  "obdelniku_fs22": 35
+ },
+ {
+  "id": 4,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.64,
+  "x": -224.4,
+  "z": -1980.9,
+  "obdelniku_fs22": 14
+ },
+ {
+  "id": 5,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 12.32,
+  "x": 64.3,
+  "z": -1839.7,
+  "obdelniku_fs22": 96
+ },
+ {
+  "id": 6,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 11.57,
+  "x": 609.7,
+  "z": -1846.7,
+  "obdelniku_fs22": 74
+ },
+ {
+  "id": 7,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.32,
+  "x": 1808.0,
+  "z": -1852.0,
+  "obdelniku_fs22": 2
+ },
+ {
+  "id": 8,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.73,
+  "x": 1859.3,
+  "z": -1948.5,
+  "obdelniku_fs22": 23
+ },
+ {
+  "id": 9,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.93,
+  "x": 1965.8,
+  "z": -1849.8,
+  "obdelniku_fs22": 8
+ },
+ {
+  "id": 10,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.74,
+  "x": 2003.0,
+  "z": -1862.9,
+  "obdelniku_fs22": 16
+ },
+ {
+  "id": 11,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.26,
+  "x": -1965.0,
+  "z": -1655.2,
+  "obdelniku_fs22": 23
+ },
+ {
+  "id": 12,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 10.03,
+  "x": -732.7,
+  "z": -1771.5,
+  "obdelniku_fs22": 58
+ },
+ {
+  "id": 13,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.54,
+  "x": -341.9,
+  "z": -1713.5,
+  "obdelniku_fs22": 7
+ },
+ {
+  "id": 14,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.25,
+  "x": -395.6,
+  "z": -1650.7,
+  "obdelniku_fs22": 12
+ },
+ {
+  "id": 15,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 4.25,
+  "x": -119.1,
+  "z": -1463.3,
+  "obdelniku_fs22": 44
+ },
+ {
+  "id": 16,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 5.97,
+  "x": 934.1,
+  "z": -1536.0,
+  "obdelniku_fs22": 18
+ },
+ {
+  "id": 17,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 2.3,
+  "x": 1342.5,
+  "z": -1674.3,
+  "obdelniku_fs22": 43
+ },
+ {
+  "id": 18,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.97,
+  "x": 1217.5,
+  "z": -1589.0,
+  "obdelniku_fs22": 17
+ },
+ {
+  "id": 19,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 3.95,
+  "x": 1916.4,
+  "z": -1379.3,
+  "obdelniku_fs22": 122
+ },
+ {
+  "id": 20,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 6.93,
+  "x": 1536.6,
+  "z": -1805.8,
+  "obdelniku_fs22": 126
+ },
+ {
+  "id": 21,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 2.73,
+  "x": 1947.8,
+  "z": -1779.8,
+  "obdelniku_fs22": 14
+ },
+ {
+  "id": 22,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.87,
+  "x": -1976.9,
+  "z": -1104.6,
+  "obdelniku_fs22": 19
+ },
+ {
+  "id": 23,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 3.62,
+  "x": -1563.9,
+  "z": -1118.9,
+  "obdelniku_fs22": 31
+ },
+ {
+  "id": 24,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 3.78,
+  "x": -1500.0,
+  "z": -1349.6,
+  "obdelniku_fs22": 32
+ },
+ {
+  "id": 25,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 2.21,
+  "x": -969.2,
+  "z": -1283.6,
+  "obdelniku_fs22": 36
+ },
+ {
+  "id": 26,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 4.67,
+  "x": -462.7,
+  "z": -1336.4,
+  "obdelniku_fs22": 42
+ },
+ {
+  "id": 27,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 5.96,
+  "x": -338.3,
+  "z": -1344.8,
+  "obdelniku_fs22": 42
+ },
+ {
+  "id": 28,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 2.47,
+  "x": 223.7,
+  "z": -1243.2,
+  "obdelniku_fs22": 17
+ },
+ {
+  "id": 29,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 12.57,
+  "x": 122.7,
+  "z": -1325.5,
+  "obdelniku_fs22": 84
+ },
+ {
+  "id": 30,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.62,
+  "x": 400.3,
+  "z": -1196.2,
+  "obdelniku_fs22": 28
+ },
+ {
+  "id": 31,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.95,
+  "x": 580.2,
+  "z": -1156.7,
+  "obdelniku_fs22": 23
+ },
+ {
+  "id": 32,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 9.4,
+  "x": 1029.9,
+  "z": -1091.8,
+  "obdelniku_fs22": 240
+ },
+ {
+  "id": 33,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 3.26,
+  "x": 1845.2,
+  "z": -1258.9,
+  "obdelniku_fs22": 122
+ },
+ {
+  "id": 34,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.98,
+  "x": 1097.9,
+  "z": -1365.6,
+  "obdelniku_fs22": 15
+ },
+ {
+  "id": 35,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 3.73,
+  "x": 1469.5,
+  "z": -1027.0,
+  "obdelniku_fs22": 57
+ },
+ {
+  "id": 36,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.86,
+  "x": 1497.9,
+  "z": -1297.1,
+  "obdelniku_fs22": 32
+ },
+ {
+  "id": 37,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.61,
+  "x": 1446.0,
+  "z": -1173.5,
+  "obdelniku_fs22": 4
+ },
+ {
+  "id": 38,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.33,
+  "x": 1842.6,
+  "z": -1173.9,
+  "obdelniku_fs22": 14
+ },
+ {
+  "id": 39,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.35,
+  "x": 1996.9,
+  "z": -1325.1,
+  "obdelniku_fs22": 12
+ },
+ {
+  "id": 40,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.06,
+  "x": -1858.4,
+  "z": -622.6,
+  "obdelniku_fs22": 21
+ },
+ {
+  "id": 41,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 6.34,
+  "x": -284.6,
+  "z": -957.7,
+  "obdelniku_fs22": 55
+ },
+ {
+  "id": 42,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.84,
+  "x": 28.7,
+  "z": -1003.7,
+  "obdelniku_fs22": 39
+ },
+ {
+  "id": 43,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 2.38,
+  "x": 632.6,
+  "z": -1015.2,
+  "obdelniku_fs22": 40
+ },
+ {
+  "id": 44,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.5,
+  "x": 1025.9,
+  "z": -766.6,
+  "obdelniku_fs22": 12
+ },
+ {
+  "id": 45,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.26,
+  "x": 1689.5,
+  "z": -983.3,
+  "obdelniku_fs22": 23
+ },
+ {
+  "id": 46,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.23,
+  "x": 1948.4,
+  "z": -925.0,
+  "obdelniku_fs22": 32
+ },
+ {
+  "id": 47,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.54,
+  "x": 1956.6,
+  "z": -661.4,
+  "obdelniku_fs22": 25
+ },
+ {
+  "id": 48,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.66,
+  "x": -1780.0,
+  "z": -281.4,
+  "obdelniku_fs22": 50
+ },
+ {
+  "id": 49,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.58,
+  "x": -1729.0,
+  "z": -410.1,
+  "obdelniku_fs22": 16
+ },
+ {
+  "id": 50,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 10.43,
+  "x": -303.5,
+  "z": -629.4,
+  "obdelniku_fs22": 74
+ },
+ {
+  "id": 51,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 13.86,
+  "x": 1003.5,
+  "z": -502.8,
+  "obdelniku_fs22": 169
+ },
+ {
+  "id": 52,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 3.93,
+  "x": 1496.0,
+  "z": -267.0,
+  "obdelniku_fs22": 34
+ },
+ {
+  "id": 53,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.05,
+  "x": 1540.1,
+  "z": -526.7,
+  "obdelniku_fs22": 20
+ },
+ {
+  "id": 54,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.52,
+  "x": 1702.2,
+  "z": -222.3,
+  "obdelniku_fs22": 36
+ },
+ {
+  "id": 55,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.57,
+  "x": 1986.8,
+  "z": -194.7,
+  "obdelniku_fs22": 23
+ },
+ {
+  "id": 56,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.53,
+  "x": -1890.5,
+  "z": -9.6,
+  "obdelniku_fs22": 10
+ },
+ {
+  "id": 57,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.47,
+  "x": -1269.2,
+  "z": 152.9,
+  "obdelniku_fs22": 23
+ },
+ {
+  "id": 58,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.37,
+  "x": -1204.5,
+  "z": 84.5,
+  "obdelniku_fs22": 13
+ },
+ {
+  "id": 59,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.43,
+  "x": -436.9,
+  "z": -135.4,
+  "obdelniku_fs22": 14
+ },
+ {
+  "id": 60,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.56,
+  "x": 11.8,
+  "z": -164.9,
+  "obdelniku_fs22": 17
+ },
+ {
+  "id": 61,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.74,
+  "x": 370.9,
+  "z": 92.0,
+  "obdelniku_fs22": 25
+ },
+ {
+  "id": 62,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 17.02,
+  "x": 588.3,
+  "z": 45.0,
+  "obdelniku_fs22": 110
+ },
+ {
+  "id": 63,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.21,
+  "x": 814.1,
+  "z": -154.8,
+  "obdelniku_fs22": 37
+ },
+ {
+  "id": 64,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.74,
+  "x": 908.8,
+  "z": 48.4,
+  "obdelniku_fs22": 6
+ },
+ {
+  "id": 65,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.36,
+  "x": 963.7,
+  "z": -62.0,
+  "obdelniku_fs22": 13
+ },
+ {
+  "id": 66,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.2,
+  "x": 1078.2,
+  "z": -183.8,
+  "obdelniku_fs22": 13
+ },
+ {
+  "id": 67,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 15.54,
+  "x": 1397.8,
+  "z": 135.2,
+  "obdelniku_fs22": 112
+ },
+ {
+  "id": 68,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.25,
+  "x": 1591.2,
+  "z": -179.5,
+  "obdelniku_fs22": 40
+ },
+ {
+  "id": 69,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.09,
+  "x": 1746.6,
+  "z": 98.4,
+  "obdelniku_fs22": 96
+ },
+ {
+  "id": 70,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.25,
+  "x": 1799.3,
+  "z": 27.5,
+  "obdelniku_fs22": 16
+ },
+ {
+  "id": 71,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.32,
+  "x": 1801.1,
+  "z": -32.0,
+  "obdelniku_fs22": 9
+ },
+ {
+  "id": 72,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.27,
+  "x": 1827.8,
+  "z": 16.4,
+  "obdelniku_fs22": 9
+ },
+ {
+  "id": 73,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.47,
+  "x": 1907.7,
+  "z": 97.0,
+  "obdelniku_fs22": 21
+ },
+ {
+  "id": 74,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 12.0,
+  "x": -1870.8,
+  "z": 369.8,
+  "obdelniku_fs22": 74
+ },
+ {
+  "id": 75,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.25,
+  "x": -1624.3,
+  "z": 560.7,
+  "obdelniku_fs22": 6
+ },
+ {
+  "id": 76,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.52,
+  "x": -1309.3,
+  "z": 579.4,
+  "obdelniku_fs22": 7
+ },
+ {
+  "id": 77,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.2,
+  "x": 278.1,
+  "z": 387.9,
+  "obdelniku_fs22": 24
+ },
+ {
+  "id": 78,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 2.0,
+  "x": 422.2,
+  "z": 227.1,
+  "obdelniku_fs22": 57
+ },
+ {
+  "id": 79,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.72,
+  "x": 500.4,
+  "z": 445.8,
+  "obdelniku_fs22": 20
+ },
+ {
+  "id": 80,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 0.49,
+  "x": 644.7,
+  "z": 513.7,
+  "obdelniku_fs22": 9
+ },
+ {
+  "id": 81,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 2.57,
+  "x": 742.6,
+  "z": 373.5,
+  "obdelniku_fs22": 22
+ },
+ {
+  "id": 82,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 3.3,
+  "x": 865.6,
+  "z": 421.0,
+  "obdelniku_fs22": 35
+ },
+ {
+  "id": 83,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 15.68,
+  "x": 994.9,
+  "z": 236.9,
+  "obdelniku_fs22": 120
+ },
+ {
+  "id": 84,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 12.4,
+  "x": 1711.2,
+  "z": 533.3,
+  "obdelniku_fs22": 119
+ },
+ {
+  "id": 85,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 1.67,
+  "x": 1978.2,
+  "z": 483.2,
+  "obdelniku_fs22": 30
+ },
+ {
+  "id": 86,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 9.76,
+  "x": -1920.6,
+  "z": 677.0,
+  "obdelniku_fs22": 48
+ },
+ {
+  "id": 87,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.87,
+  "x": -1595.8,
+  "z": 796.6,
+  "obdelniku_fs22": 9
+ },
+ {
+  "id": 88,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.96,
+  "x": -1558.1,
+  "z": 907.6,
+  "obdelniku_fs22": 10
+ },
+ {
+  "id": 89,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.78,
+  "x": -1544.4,
+  "z": 671.0,
+  "obdelniku_fs22": 7
+ },
+ {
+  "id": 90,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.64,
+  "x": -1325.6,
+  "z": 985.2,
+  "obdelniku_fs22": 10
+ },
+ {
+  "id": 91,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.91,
+  "x": -917.7,
+  "z": 899.2,
+  "obdelniku_fs22": 24
+ },
+ {
+  "id": 92,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.59,
+  "x": -751.7,
+  "z": 848.2,
+  "obdelniku_fs22": 13
+ },
+ {
+  "id": 93,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.94,
+  "x": -677.9,
+  "z": 913.0,
+  "obdelniku_fs22": 14
+ },
+ {
+  "id": 94,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.63,
+  "x": 591.6,
+  "z": 798.1,
+  "obdelniku_fs22": 40
+ },
+ {
+  "id": 95,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.65,
+  "x": 837.8,
+  "z": 895.3,
+  "obdelniku_fs22": 8
+ },
+ {
+  "id": 96,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.68,
+  "x": 914.0,
+  "z": 976.5,
+  "obdelniku_fs22": 7
+ },
+ {
+  "id": 97,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 3.1,
+  "x": 984.4,
+  "z": 799.5,
+  "obdelniku_fs22": 29
+ },
+ {
+  "id": 98,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 15.06,
+  "x": 1242.2,
+  "z": 677.0,
+  "obdelniku_fs22": 75
+ },
+ {
+  "id": 99,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 21.81,
+  "x": 1419.6,
+  "z": 967.5,
+  "obdelniku_fs22": 90
+ },
+ {
+  "id": 100,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 8.91,
+  "x": 1824.6,
+  "z": 820.8,
+  "obdelniku_fs22": 77
+ },
+ {
+  "id": 101,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 6.94,
+  "x": -1931.1,
+  "z": 1237.6,
+  "obdelniku_fs22": 53
+ },
+ {
+  "id": 102,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 5.1,
+  "x": -1494.5,
+  "z": 1098.8,
+  "obdelniku_fs22": 51
+ },
+ {
+  "id": 103,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.51,
+  "x": -1456.2,
+  "z": 1242.4,
+  "obdelniku_fs22": 5
+ },
+ {
+  "id": 104,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 8.23,
+  "x": -1278.5,
+  "z": 1378.1,
+  "obdelniku_fs22": 20
+ },
+ {
+  "id": 105,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.04,
+  "x": -1103.7,
+  "z": 1233.4,
+  "obdelniku_fs22": 6
+ },
+ {
+  "id": 106,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.58,
+  "x": -1093.3,
+  "z": 1157.2,
+  "obdelniku_fs22": 6
+ },
+ {
+  "id": 107,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.88,
+  "x": -930.1,
+  "z": 1045.6,
+  "obdelniku_fs22": 10
+ },
+ {
+  "id": 108,
+  "typ": "orchard",
+  "doporuceni": "sad",
+  "nazev": "",
+  "vymera_ha": 5.82,
+  "x": -871.3,
+  "z": 1271.7,
+  "obdelniku_fs22": 67
+ },
+ {
+  "id": 109,
+  "typ": "orchard",
+  "doporuceni": "sad",
+  "nazev": "",
+  "vymera_ha": 1.55,
+  "x": -710.0,
+  "z": 1323.1,
+  "obdelniku_fs22": 3
+ },
+ {
+  "id": 110,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.79,
+  "x": -668.8,
+  "z": 1244.4,
+  "obdelniku_fs22": 4
+ },
+ {
+  "id": 111,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.69,
+  "x": -554.1,
+  "z": 1264.2,
+  "obdelniku_fs22": 2
+ },
+ {
+  "id": 112,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.73,
+  "x": -564.6,
+  "z": 1369.3,
+  "obdelniku_fs22": 1
+ },
+ {
+  "id": 113,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.73,
+  "x": -525.3,
+  "z": 1386.6,
+  "obdelniku_fs22": 1
+ },
+ {
+  "id": 114,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 7.29,
+  "x": 414.5,
+  "z": 1396.6,
+  "obdelniku_fs22": 52
+ },
+ {
+  "id": 115,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 7.17,
+  "x": 837.3,
+  "z": 1282.4,
+  "obdelniku_fs22": 37
+ },
+ {
+  "id": 116,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 4.29,
+  "x": 1002.6,
+  "z": 1087.8,
+  "obdelniku_fs22": 21
+ },
+ {
+  "id": 117,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 4.15,
+  "x": 1066.0,
+  "z": 1341.4,
+  "obdelniku_fs22": 39
+ },
+ {
+  "id": 118,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.52,
+  "x": 1127.8,
+  "z": 1243.3,
+  "obdelniku_fs22": 15
+ },
+ {
+  "id": 119,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.41,
+  "x": 1194.8,
+  "z": 1138.4,
+  "obdelniku_fs22": 18
+ },
+ {
+  "id": 120,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.6,
+  "x": 1416.6,
+  "z": 1321.4,
+  "obdelniku_fs22": 10
+ },
+ {
+  "id": 121,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 13.47,
+  "x": 1899.8,
+  "z": 1063.8,
+  "obdelniku_fs22": 115
+ },
+ {
+  "id": 122,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 2.7,
+  "x": -1972.5,
+  "z": 1621.7,
+  "obdelniku_fs22": 39
+ },
+ {
+  "id": 123,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 2.03,
+  "x": -1807.4,
+  "z": 1505.2,
+  "obdelniku_fs22": 23
+ },
+ {
+  "id": 124,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 15.51,
+  "x": -1604.1,
+  "z": 1592.5,
+  "obdelniku_fs22": 57
+ },
+ {
+  "id": 125,
+  "typ": "orchard",
+  "doporuceni": "sad",
+  "nazev": "",
+  "vymera_ha": 19.73,
+  "x": -1083.4,
+  "z": 1630.7,
+  "obdelniku_fs22": 112
+ },
+ {
+  "id": 126,
+  "typ": "orchard",
+  "doporuceni": "sad",
+  "nazev": "",
+  "vymera_ha": 2.02,
+  "x": -782.5,
+  "z": 1781.0,
+  "obdelniku_fs22": 7
+ },
+ {
+  "id": 127,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 2.02,
+  "x": -644.3,
+  "z": 1562.0,
+  "obdelniku_fs22": 2
+ },
+ {
+  "id": 128,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 1.18,
+  "x": -546.7,
+  "z": 1610.2,
+  "obdelniku_fs22": 1
+ },
+ {
+  "id": 129,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 0.27,
+  "x": -493.3,
+  "z": 1634.2,
+  "obdelniku_fs22": 1
+ },
+ {
+  "id": 130,
+  "typ": "orchard",
+  "doporuceni": "sad",
+  "nazev": "",
+  "vymera_ha": 1.59,
+  "x": -447.3,
+  "z": 1656.3,
+  "obdelniku_fs22": 4
+ },
+ {
+  "id": 131,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 5.11,
+  "x": -398.4,
+  "z": 1417.2,
+  "obdelniku_fs22": 8
+ },
+ {
+  "id": 132,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 7.84,
+  "x": -261.6,
+  "z": 1522.8,
+  "obdelniku_fs22": 8
+ },
+ {
+  "id": 133,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 19.89,
+  "x": 55.7,
+  "z": 1652.6,
+  "obdelniku_fs22": 85
+ },
+ {
+  "id": 134,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 19.06,
+  "x": 477.6,
+  "z": 1761.2,
+  "obdelniku_fs22": 99
+ },
+ {
+  "id": 135,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 7.11,
+  "x": 702.8,
+  "z": 1487.4,
+  "obdelniku_fs22": 26
+ },
+ {
+  "id": 136,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 2.65,
+  "x": 1267.3,
+  "z": 1517.6,
+  "obdelniku_fs22": 38
+ },
+ {
+  "id": 137,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 2.22,
+  "x": 1269.4,
+  "z": 1639.5,
+  "obdelniku_fs22": 48
+ },
+ {
+  "id": 138,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.79,
+  "x": 1368.0,
+  "z": 1409.2,
+  "obdelniku_fs22": 18
+ },
+ {
+  "id": 139,
+  "typ": "meadow",
+  "doporuceni": "louka / tráva",
+  "nazev": "",
+  "vymera_ha": 14.24,
+  "x": 1770.4,
+  "z": 1421.3,
+  "obdelniku_fs22": 58
+ },
+ {
+  "id": 140,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.59,
+  "x": 1961.0,
+  "z": 1742.3,
+  "obdelniku_fs22": 40
+ },
+ {
+  "id": 141,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 0.51,
+  "x": -2002.2,
+  "z": 1943.3,
+  "obdelniku_fs22": 6
+ },
+ {
+  "id": 142,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 0.29,
+  "x": -1973.4,
+  "z": 1938.7,
+  "obdelniku_fs22": 4
+ },
+ {
+  "id": 143,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 0.74,
+  "x": -1939.4,
+  "z": 1935.8,
+  "obdelniku_fs22": 9
+ },
+ {
+  "id": 144,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 1.1,
+  "x": -1864.0,
+  "z": 1926.7,
+  "obdelniku_fs22": 11
+ },
+ {
+  "id": 145,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 0.57,
+  "x": -1818.1,
+  "z": 1919.3,
+  "obdelniku_fs22": 6
+ },
+ {
+  "id": 146,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 6.55,
+  "x": -1669.4,
+  "z": 1915.3,
+  "obdelniku_fs22": 37
+ },
+ {
+  "id": 147,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.09,
+  "x": -1509.9,
+  "z": 1880.2,
+  "obdelniku_fs22": 7
+ },
+ {
+  "id": 148,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 4.55,
+  "x": -1407.6,
+  "z": 1916.4,
+  "obdelniku_fs22": 34
+ },
+ {
+  "id": 149,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.5,
+  "x": -951.0,
+  "z": 1920.0,
+  "obdelniku_fs22": 9
+ },
+ {
+  "id": 150,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.36,
+  "x": -836.6,
+  "z": 1983.1,
+  "obdelniku_fs22": 21
+ },
+ {
+  "id": 151,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 3.92,
+  "x": -694.3,
+  "z": 1846.8,
+  "obdelniku_fs22": 15
+ },
+ {
+  "id": 152,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 0.5,
+  "x": -619.7,
+  "z": 1882.7,
+  "obdelniku_fs22": 1
+ },
+ {
+  "id": 153,
+  "typ": "vineyard",
+  "doporuceni": "vinice (hrozny)",
+  "nazev": "",
+  "vymera_ha": 1.82,
+  "x": -553.0,
+  "z": 1854.6,
+  "obdelniku_fs22": 10
+ },
+ {
+  "id": 154,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.86,
+  "x": -516.1,
+  "z": 1904.8,
+  "obdelniku_fs22": 7
+ },
+ {
+  "id": 155,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 1.61,
+  "x": -464.0,
+  "z": 1919.6,
+  "obdelniku_fs22": 14
+ },
+ {
+  "id": 156,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 0.66,
+  "x": -409.1,
+  "z": 1927.0,
+  "obdelniku_fs22": 6
+ },
+ {
+  "id": 157,
+  "typ": "farmland",
+  "doporuceni": "orná půda",
+  "nazev": "",
+  "vymera_ha": 8.63,
+  "x": -231.6,
+  "z": 1775.2,
+  "obdelniku_fs22": 56
+ }
+]

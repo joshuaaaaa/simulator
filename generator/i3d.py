@@ -87,6 +87,7 @@ class I3D:
         self.scene = []      # xml lines
         self._shape_id = 0
         self._node_id = 0
+        self.user_attrs = {}  # nodeId -> [(name, type, value)]
 
     def material(self, name, rgb, alpha=1.0):
         self.materials.append((name, (*rgb, alpha)))
@@ -126,6 +127,20 @@ class I3D:
     def close_group(self, indent):
         self.scene.append(f"{indent}</TransformGroup>")
 
+    def add_user_attr(self, node_id, name, typ, value):
+        self.user_attrs.setdefault(node_id, []).append((name, typ, value))
+
+    def _user_attrs_xml(self):
+        if not self.user_attrs:
+            return ""
+        out = ["  <UserAttributes>"]
+        for nid, attrs in self.user_attrs.items():
+            out.append(f'    <UserAttribute nodeId="{nid}">')
+            out += [f'      <Attribute name="{n}" type="{t}" value="{v}"/>' for n, t, v in attrs]
+            out.append("    </UserAttribute>")
+        out.append("  </UserAttributes>")
+        return "\n".join(out) + "\n"
+
     def write(self, path):
         mats = "\n".join(
             f'    <Material name={quoteattr(n)} materialId="{i}" diffuseColor="{" ".join(_f(c) for c in rgba)}" '
@@ -145,6 +160,6 @@ class I3D:
   <Scene>
 {chr(10).join(self.scene)}
   </Scene>
-</i3D>
+{self._user_attrs_xml()}</i3D>
 """
         path.write_text(xml, encoding="utf-8")

@@ -23,7 +23,7 @@ import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-MOD = ROOT / "FS25_Lednice"
+MOD = ROOT / "FS25_Lednice"      # přepíše se podle --hra
 DATA = MOD / "maps" / "data"
 
 # náš název vrstvy -> kandidáti v šabloně (první nalezený vyhrává)
@@ -32,13 +32,13 @@ CANDIDATES = {
     "grassMeadow": ["grassClovers01", "grassFreshMiddle01", "grass02", "grass01", "grass"],
     "field": ["mudDark01", "mudLight01", "mud01", "grassDirtPatchy01", "grass01"],
     "fieldLight": ["mudLight01", "mudDark01", "grass01"],
-    "forest": ["forestGrass01", "forestGround01", "forestLeaves01", "grass01"],
-    "scrub": ["grassDirtPatchy01", "forestGrass01", "grass01"],
-    "wetland": ["mudDarkGrassPatchy01", "grassMoss01", "riverMud01", "grass01"],
+    "forest": ["forestGrass01", "forestGround01", "forestLeaves01", "forestNeedels01", "grass01"],
+    "scrub": ["grassDirtPatchy01", "grassDirt01", "forestGrass01", "forestGround01", "grass01"],
+    "wetland": ["mudDarkGrassPatchy01", "grassMoss01", "riverMud01", "mudDark01", "grass01"],
     "garden": ["grassCut01", "grassFreshShort01", "grass01"],
     "concrete": ["concrete01", "concretePebbles01", "asphalt01"],
     "mudTracks": ["mudTracks01", "gravelDirtMoss01", "gravel01"],
-    "gravel": ["gravel01", "gravelSmall01", "gravelPebblesMoss01", "sand01"],
+    "gravel": ["gravel01", "gravelSmall01", "gravelPebblesMoss01", "sand01", "mudPebbles01"],
     "riverMud": ["riverMud01", "mudDark01", "sand01"],
     "asphalt": ["asphalt01", "asphaltDusty01", "asphalt"],
 }
@@ -89,7 +89,15 @@ def set_attr(text, tag, attr, value):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("template", type=Path)
+    ap.add_argument("--hra", choices=["fs25", "fs22"], default="fs25",
+                    help="pro kterou hru je šablona (fs25 = FS25_Lednice, fs22 = FS22_Lednice)")
     a = ap.parse_args()
+    global MOD, DATA
+    MOD = ROOT / ("FS22_Lednice" if a.hra == "fs22" else "FS25_Lednice")
+    DATA = MOD / "maps" / "data"
+    if not DATA.exists():
+        gen = "build_fs22.py" if a.hra == "fs22" else "build_map.py"
+        raise SystemExit(f"Chybí {MOD.name}/ – nejdřív spusťte generator/{gen}.")
     tpl = a.template.resolve()
     meta = json.loads((DATA / "lednice_meta.json").read_text())
     report = []
@@ -124,7 +132,13 @@ def main():
         report.append("! Nenalezen .i3d s TerrainTransformGroup – heightScale nastavte ručně na 255.")
 
     # --- texturové masky ---
-    tpl_weights = {p.name[:-len("_weight.png")].lower(): p for p in data_dir.glob("*_weight.png")}
+    # názvy vrstev bez přípony _weight.png a bez případné předpony (např. FS22 "map_")
+    tpl_weights = {}
+    for p in data_dir.glob("*_weight.png"):
+        key = p.name[:-len("_weight.png")].lower()
+        tpl_weights[key] = p
+        if "_" in key:
+            tpl_weights.setdefault(key.split("_", 1)[1], p)
     assigned = {}
     for layer in meta["layers"]:
         target = next((c for c in CANDIDATES[layer] if c.lower() in tpl_weights), None)
@@ -136,10 +150,20 @@ def main():
         assigned[key] = np.maximum(assigned[key], m) if key in assigned else m
         report.append(f"textura {layer:12s} -> {tpl_weights[key].name}")
     size = meta["weightSize"]
+    by_path = {}
     for key, path in tpl_weights.items():
-        arr = assigned.get(key, np.zeros((size, size), np.uint8))
+        if key in assigned:
+            prev = by_path.get(path)
+            by_path[path] = assigned[key] if prev is None else np.maximum(prev, assigned[key])
+        else:
+            by_path.setdefault(path, None)
+    zeroed = 0
+    for path, arr in by_path.items():
+        if arr is None:
+            arr = np.zeros((size, size), np.uint8)
+            zeroed += 1
         Image.fromarray(arr).save(path)
-    report.append(f"vynulováno dalších vrstev šablony: {len(set(tpl_weights) - set(assigned))}")
+    report.append(f"vynulováno dalších vrstev šablony: {zeroed}")
 
     # --- pozemky ---
     fl_t = find_one(tpl, "infoLayer_farmlands.png")
@@ -171,7 +195,8 @@ def main():
             t = re.sub(rf"<{tag}>.*?</{tag}>", re.search(rf"<{tag}>.*?</{tag}>", ours, re.S).group(0), t,
                        count=1, flags=re.S)
         t = re.sub(r"<iconFilename>[^<]*</iconFilename>", "<iconFilename>icon_Lednice.dds</iconFilename>", t, count=1)
-        t, _ = set_attr(t, "map", "size", str(meta["mapSize"]))
+        if meta.get("game") != "fs22":
+            t, _ = set_attr(t, "map", "size", str(meta["mapSize"]))
         md.write_text(t, encoding="utf-8")
         report.append("modDesc.xml: název, popis, ikona, size")
     mx = find_one(tpl, "map.xml", lambda p: "<map" in p.read_text(errors="ignore"))
@@ -187,7 +212,8 @@ def main():
     shutil.copytree(ROOT / "ge_scripts", dst / "ge_scripts", dirs_exist_ok=True)
     report.append(f"import soubory -> {dst.relative_to(tpl)}/ (buildings.i3d, roads.i3d, fields.i3d, water.i3d, trees.csv)")
     print("\n".join(report))
-    print("\nHotovo. Pokračujte v Giants Editoru podle README (kroky 4–8).")
+    guide = "docs/POSTUP_FS22.md" if meta.get("game") == "fs22" else "docs/POSTUP.md"
+    print(f"\nHotovo. Pokračujte v Giants Editoru podle {guide} (část C).")
 
 
 if __name__ == "__main__":
